@@ -22,8 +22,36 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+
+        $request->session()->put(['mk'=>'Mengkong']);
+        
+
+        // also use to set session
+        session(['mk2'=>'Mengkong 2']);
+
+
+        // $session->set('mk','Mengkong');
+
+        //return $request->session()->all();
+
+        //Flash is used to display message in short period of time, 
+        //it will auto delete after a period of time
+        $request->session()->flash('message','Post has been inserted.');
+
+        $session    =   $request->session()->all();
+        return view('home',compact('session'));
+    }
+
+    public function deleteSession(Request $request){
+        // to delete session
+        $request->session()->forget('mk');
+
+        // to delete all session
+        //$request->session()->flush();
+
+        $session    =   $request->session()->all();
+        return view('home',compact('session'));
     }
 }

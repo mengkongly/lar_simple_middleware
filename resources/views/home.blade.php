@@ -10,6 +10,14 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
+                <div class="panel-body">
+                    <pre>
+                        {{var_dump($session)}}
+                    </pre>                 
+                </div>
+                <div class="panel-body">
+                    <a href="/home/delete-session" class="btn btn-info">Delete Session</a>
+                </div>
             </div>
         </div>
     </div>

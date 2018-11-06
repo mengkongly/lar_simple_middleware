@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,9 +14,13 @@
 */
 
 Route::get('/', function () {
+    
     return view('welcome');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/home/delete-session','HomeController@deleteSession');
+
+Route::get('/admin','AdminController@index');
